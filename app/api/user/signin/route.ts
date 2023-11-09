@@ -1,6 +1,10 @@
 import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import {hash} from 'bcrypt'
+import * as z from 'zod'
+
+
+
 export async function POST(req: NextRequest, ) {
     
     try {
@@ -37,7 +41,7 @@ export async function POST(req: NextRequest, ) {
 
         return NextResponse.json({user: result, message: 'sucess create user'}, {status: 201});
     } catch (error) {
-        
+        return NextResponse.json({message: 'internal server error'}, {status: 500})
     }
-    return NextResponse.json({message: 'success'})
+    
 }

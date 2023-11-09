@@ -1,9 +1,18 @@
 import Image from 'next/image'
+import Navbar from './components/Navbar'
+import Link from 'next/link'
 
-export default function Home() {
+
+export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <p>hello</p>
-    </main>
+    <div>
+      <Navbar/>
+      <div className='flex justify-center mt-10'>
+        <Link href={'/protected'}>
+        <button className='p-2 bg-blue-700 shadow-md rounded-md text-white'>Protected route</button>
+        </Link>
+        
+      </div>
+    </div>
   )
 }
