@@ -18,7 +18,7 @@ export default async function content() {
 
   return (
     <div className='flex justify-center mt-4'>
-        <div className=' max-xl:w-11/12 w-7/12 px-6'>
+        <div className=' max-xl:w-11/12 w-8/12 px-6'>
           {post.map((item: any)=>(
             <Link href={`/post/${item.id}`} key={item.id} >
               <div className="card w-full bg-primary text-primary-content mt-2">
