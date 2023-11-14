@@ -1,0 +1,18 @@
+import { db } from "@/lib/db";
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET(req:NextRequest, {params}:{params:{id:string}}){
+    try {
+        const id = params.id
+        const res = await db.post.findUnique({
+            where:{
+                id:Number(id)
+            }
+        })
+
+        return NextResponse.json({message:'success', post:res}, {status:200})
+    } catch (error) {
+        console.log(error)
+        return NextResponse.json({message:'internal server error'}, {status:500})
+    }
+}

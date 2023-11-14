@@ -9,7 +9,7 @@ export async function POST(req: NextRequest, ) {
     
     try {
         const body = await req.json()
-        const {username,email, password} = body;
+        const {name,email, password} = body;
 
         const existingEmail = await db.user.findUnique({
             where: {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest, ) {
         }
         const existingUsername = await db.user.findUnique({
             where: {
-                username: username
+                name:name
             }
         })
 
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest, ) {
         const hashPassword = await hash(password, 10)
         const result = await db.user.create({
             data:{
-                username,
+                name,
                 email,
                 password: hashPassword
             }
