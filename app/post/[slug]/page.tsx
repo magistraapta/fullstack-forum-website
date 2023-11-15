@@ -12,14 +12,6 @@ async function getPostById(id:number){
   }
 }
 
-async function createComment(id:number){
-  try {
-    const res = await axios.post(`http://localhost:3000/api/post/comment/${id}`)
-    return res.data
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 export default async function page({params}:{params:{slug:number}}) {
 
