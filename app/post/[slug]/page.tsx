@@ -26,16 +26,17 @@ export default async function page({params}:{params:{slug:number}}) {
         <div className="card w-8/12 bg-primary text-primary-content mt-10">
           <div className="card-body">
             <h2 className="card-title text-3xl">{post.title}</h2>
+            
+            
             <p className=' font-light'>{post.body}</p>
+            <p className='text-xs text-info'>{post.user.name}</p>
           </div>
-          
         </div>
       </div>
       <div className='flex justify-center mt-6'>
         <CommentInput params={params.slug}/>
       </div>
-      
-      <div className='flex justify-center'>
+      <div className='flex justify-center mb-6'>
         <div className='w-8/12'>
         <div className='mt-6'>
         {comment.map((item: any, index:number)=>(
