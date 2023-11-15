@@ -27,6 +27,17 @@ export default function SignUpForm() {
                     <label htmlFor="">Email</label>
                     <input type="email" className='w-9/12 p-2' value={email} onChange={(e)=> setEmail(e.target.value)} />
                 </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">What is your name?</span>
+                        <span className="label-text-alt">Top Right label</span>
+                    </label>
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <label className="label">
+                        <span className="label-text-alt">Bottom Left label</span>
+                        <span className="label-text-alt">Bottom Right label</span>
+                    </label>
+                </div>
                 <div className='mt-4 flex justify-between'>
                     <label htmlFor="">Password</label>
                     <input type="password" value={password} className='w-9/12 p-2' onChange={(e) => setPassword(e.target.value)}/>
