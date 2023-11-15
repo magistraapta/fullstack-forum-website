@@ -9,7 +9,16 @@ export async function GET(req:NextRequest, {params}:{params:{id:string}}){
                 id:Number(id)
             },
             include:{
-                comment: true
+                comment: {
+                    select:{
+                        comment: true,
+                        user: {
+                            select:{
+                                name: true
+                            }
+                        }
+                    }
+                }
             }
         })
 
