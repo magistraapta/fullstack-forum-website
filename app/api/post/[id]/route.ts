@@ -7,6 +7,9 @@ export async function GET(req:NextRequest, {params}:{params:{id:string}}){
         const res = await db.post.findUnique({
             where:{
                 id:Number(id)
+            },
+            include:{
+                comment: true
             }
         })
 
