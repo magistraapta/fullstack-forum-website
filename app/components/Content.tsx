@@ -23,17 +23,11 @@ export default async function content() {
             <Link href={`/post/${item.id}`} key={item.id} >
               <div className="card w-full bg-primary text-primary-content mt-2">
                 <div className="card-body flex ">
-                  <h2 className="card-title">{item.title}</h2>
-                  <p>{item.body}</p>
-                  <div>
-                    <p>{item.user.name}</p>
-                  </div>
+                  <h2 className="card-title text-3xl">{item.title}</h2>
+                  <p className='text-info'>{item.user.name}</p>
                 </div>
-                
               </div>
-
             </Link>
-            
           ))}
         </div>
     </div>

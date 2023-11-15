@@ -5,7 +5,6 @@ export default async function Home() {
     <div>
       <Navbar/>
       <Content/>
-      <p>1</p>
     </div>
   )
 }
