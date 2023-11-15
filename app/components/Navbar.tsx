@@ -11,10 +11,17 @@ function AuthComponent(){
     const router = useRouter()
     if (session) {
         return (
-            <div>
-                Hi, {session?.user?.name} 
-                <br />
-                <button onClick={()=> signOut()} className='btn-ghost'>Sign Out</button>
+            
+            <div className="dropdown">
+                <label tabIndex={0} className="btn m-1 btn-primary">Hi, {session?.user?.name}</label>
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><button onClick={()=> signOut()} className='text-error'>Sign Out</button></li>
+                        <li>
+                            <Link href={'/profile'}>
+                                Profile
+                            </Link>
+                        </li>
+                </ul>
             </div>
         )
     }
@@ -40,7 +47,9 @@ export default function Navbar() {
     const router = useRouter()
 
     const handleSubmit = async (event: FormEvent)=>{
+        event.preventDefault()
         try {
+            
             const res = await axios.post('http://localhost:3000/api/post/create',{
                 title,
                 body,
@@ -75,7 +84,7 @@ export default function Navbar() {
     <div className='flex justify-center shadow-md'>
         <div className='w-11/12 p-6 flex items-center justify-between'>
             <Link href={'/'}>
-                <h3 className='font-bold text-2xl'>Burung Biru</h3>
+                <h3 className='font-bold text-2xl'> <span className='text-info'>Forum</span> <br /> Keluh-kesah</h3>
             </Link>
             
             <div className='flex gap-6 items-center'>
