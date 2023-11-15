@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import Navbar from '@/app/components/Navbar'
-import CommentSection from '../CommentSection'
+import CommentInput from '../CommentInput'
 
 async function getPostById(id:number){
   try {
@@ -12,10 +12,21 @@ async function getPostById(id:number){
   }
 }
 
+async function createComment(id:number){
+  try {
+    const res = await axios.post(`http://localhost:3000/api/post/comment/${id}`)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default async function page({params}:{params:{slug:number}}) {
 
   const getData = await getPostById(params.slug)
   const post = getData.post
+  const comment = post.comment
+
   return (
     <div>
       <Navbar/>
@@ -29,15 +40,21 @@ export default async function page({params}:{params:{slug:number}}) {
         </div>
       </div>
       <div className='flex justify-center mt-6'>
-        <div className=' w-8/12 flex justify-between gap-2'>
-            <input type="text" placeholder="Write your comment about this" className="input input-bordered w-full" />
-            <button className='btn-primary btn btn-outline'>Send</button>
-        </div>
-        
+        <CommentInput params={params.slug}/>
       </div>
+      
       <div className='flex justify-center'>
         <div className='w-8/12'>
-        <CommentSection/>
+        <div className='mt-6'>
+        {comment.map((item: any, index:number)=>(
+            <div className="card w-full bg-base-100 border mt-2" key={index}>
+            <div className="card-body">
+              <p>{item.user.name}</p>
+              <h2 className='card-title'>{item.comment}</h2>
+            </div>
+          </div>
+        ))}
+        </div>
         </div>
        
       </div>
