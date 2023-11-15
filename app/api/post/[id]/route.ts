@@ -18,6 +18,11 @@ export async function GET(req:NextRequest, {params}:{params:{id:string}}){
                             }
                         }
                     }
+                },
+                user:{
+                    select:{
+                        name:true
+                    }
                 }
             }
         })
